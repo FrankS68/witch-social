@@ -1,0 +1,47 @@
+# Kopieren nach application-local.properties (wird nicht eingecheckt) und Werte eintragen.
+# Nur Provider eintragen, die genutzt werden - mindestens einer ist noetig.
+
+witch-auth.first-admin-email=
+
+spring.security.oauth2.client.registration.google.client-id=
+spring.security.oauth2.client.registration.google.client-secret=
+spring.security.oauth2.client.registration.google.scope=openid,profile,email
+
+spring.security.oauth2.client.registration.github.provider=github
+spring.security.oauth2.client.registration.github.client-id=
+spring.security.oauth2.client.registration.github.client-secret=
+spring.security.oauth2.client.registration.github.scope=read:user,user:email
+
+#spring.security.oauth2.client.registration.facebook.client-id=
+#spring.security.oauth2.client.registration.facebook.client-secret=
+#spring.security.oauth2.client.registration.facebook.scope=email,public_profile
+
+# Das Wort nach 'registration.' definiert die ID
+#spring.security.oauth2.client.registration.azure.client-id=
+#spring.security.oauth2.client.registration.azure.client-secret=
+#spring.security.oauth2.client.registration.azure.scope=openid, profile, email, User.Read
+#spring.security.oauth2.client.provider.azure.issuer-uri=https://login.microsoftonline.com/<tenant-id>/v2.0
+
+# ---------------------------------------------------------------------------
+# Social-Netzwerke (Konten verbinden & posten)
+# ---------------------------------------------------------------------------
+
+# Schluessel zum Verschluesseln der Zugangstoken in der Datenbank (32 Byte, Base64).
+# Erzeugen z.B. mit: openssl rand -base64 32
+# Danach nicht mehr aendern, sonst sind gespeicherte Token unlesbar.
+social.crypto-key=
+
+# Meta (Facebook-Seiten + Instagram-Business): https://developers.facebook.com/apps/
+# Redirect-URI in der App eintragen: <public-base-url>/connect/meta/callback
+social.meta.app-id=
+social.meta.app-secret=
+
+# Pinterest: https://developers.pinterest.com/apps/
+# Redirect-URI: <public-base-url>/connect/pinterest/callback
+social.pinterest.client-id=
+social.pinterest.client-secret=
+# Mit Trial-Zugang nur Sandbox:
+#social.pinterest.api-base-url=https://api-sandbox.pinterest.com
+
+# Mastodon: keine Einstellung noetig, die App registriert sich pro Instanz selbst.
+# Bluesky: keine Einstellung noetig, Verbindung per Handle + App-Passwort.
