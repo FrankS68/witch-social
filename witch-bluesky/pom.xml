@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--
+        Bluesky fuer witch-social: Posten (Text, Bild, klickbare Links) und Timeline lesen.
+        Verbinden mit Handle + App-Passwort, nichts einzurichten.
+        Optional: social.bluesky.default-pds (Default https://bsky.social)
+    -->
+    <parent>
+        <groupId>de.witchcafe</groupId>
+        <artifactId>witch-parent</artifactId>
+        <version>1.0.0</version>
+        <relativePath/>
+    </parent>
+
+    <artifactId>witch-bluesky</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    <name>witch-bluesky</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>de.witchcafe</groupId>
+            <artifactId>witch-social-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <!-- Vaadin scannt das Jar beim Frontend-Build nach Komponenten -->
+                            <Vaadin-Package-Version>1</Vaadin-Package-Version>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- damit Maven witch-parent findet, wenn witch-base nicht lokal installiert ist -->
+    <repositories>
+        <repository>
+            <id>github</id>
+            <name>GitHub FrankS68 Maven Packages</name>
+            <url>https://maven.pkg.github.com/FrankS68/witch-auth</url>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+    </repositories>
+</project>

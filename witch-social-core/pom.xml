@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--
+        Kern von witch-social (Paket de.witchcafe.social), unabhaengig von einzelnen Netzwerken:
+          - Konten, Beitraege (sofort/geplant), Bilder, verschluesselte Zugangstoken (JPA)
+          - Views: Feeds (/feeds, zugleich /), Neuer Beitrag (/beitrag), Beitraege (/beitraege), Konten (/konten)
+          - SPI fuer Netzwerk-Module: client.SocialNetwork (API) und ui.AccountConnector (Verbinden)
+        Wird von Apps gefunden, die de.witchcafe scannen (@ComponentScan / @EnableVaadin / @EntityScan).
+        Apps binden es ueber witch-social-parent ein, Netzwerk-Module direkt.
+    -->
+    <parent>
+        <groupId>de.witchcafe</groupId>
+        <artifactId>witch-parent</artifactId>
+        <version>1.0.0</version>
+        <relativePath/>
+    </parent>
+
+    <artifactId>witch-social-core</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    <name>witch-social-core</name>
+
+    <dependencies>
+        <!-- RestClient fuer die APIs der sozialen Netzwerke -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-restclient</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <!-- Vaadin scannt das Jar beim Frontend-Build nach Komponenten -->
+                            <Vaadin-Package-Version>1</Vaadin-Package-Version>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- damit Maven witch-parent findet, wenn witch-base nicht lokal installiert ist -->
+    <repositories>
+        <repository>
+            <id>github</id>
+            <name>GitHub FrankS68 Maven Packages</name>
+            <url>https://maven.pkg.github.com/FrankS68/witch-auth</url>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+    </repositories>
+</project>

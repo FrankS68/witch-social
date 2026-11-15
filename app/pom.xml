@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Die Social-Media-Zentrale selbst: witch-social-parent mit allen Netzwerk-Modulen.
+         Zugleich Beispiel fuer eigene Apps (dort <relativePath/> leer setzen). -->
+    <parent>
+        <groupId>de.witchcafe</groupId>
+        <artifactId>witch-social-parent</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../witch-social-parent</relativePath>
+    </parent>
+
+    <artifactId>witch-social</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <!-- App wird nicht als Maven-Artefakt veroeffentlicht -->
+        <maven.deploy.skip>true</maven.deploy.skip>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>de.witchcafe</groupId>
+            <artifactId>witch-ui</artifactId>
+        </dependency>
+        <!-- Netzwerke: nur einbinden, was die App koennen soll -->
+        <dependency>
+            <groupId>de.witchcafe</groupId>
+            <artifactId>witch-bluesky</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.witchcafe</groupId>
+            <artifactId>witch-mastodon</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.witchcafe</groupId>
+            <artifactId>witch-meta</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.witchcafe</groupId>
+            <artifactId>witch-pinterest</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

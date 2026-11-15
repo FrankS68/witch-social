@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--
+        Parent fuer WitchCafe-Apps mit Social-Media-Funktionen. Alternative zu witch-parent:
+        bringt alles aus witch-parent mit und zusaetzlich witch-social-core (Konten, Beitraege,
+        Feeds, Views unter /feeds (zugleich /), /beitrag, /beitraege, /konten).
+
+        Einbinden:
+            <parent>
+                <groupId>de.witchcafe</groupId>
+                <artifactId>witch-social-parent</artifactId>
+                <version>1.0.0</version>
+                <relativePath/>
+            </parent>
+
+        Netzwerke waehlt jede App selbst, als Abhaengigkeit ohne Version:
+            de.witchcafe:witch-bluesky     Bluesky (Handle + App-Passwort)
+            de.witchcafe:witch-mastodon    Mastodon (OAuth, beliebige Instanz)
+            de.witchcafe:witch-meta        Facebook-Seiten und Instagram (Meta-App noetig)
+            de.witchcafe:witch-pinterest   Pinterest (Pinterest-App noetig)
+    -->
+    <parent>
+        <groupId>de.witchcafe</groupId>
+        <artifactId>witch-parent</artifactId>
+        <version>1.0.0</version>
+        <relativePath/>
+    </parent>
+
+    <artifactId>witch-social-parent</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>witch-social-parent</name>
+
+    <properties>
+        <witch-social.version>1.0.0</witch-social.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>de.witchcafe</groupId>
+                <artifactId>witch-social-core</artifactId>
+                <version>${witch-social.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.witchcafe</groupId>
+                <artifactId>witch-bluesky</artifactId>
+                <version>${witch-social.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.witchcafe</groupId>
+                <artifactId>witch-mastodon</artifactId>
+                <version>${witch-social.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.witchcafe</groupId>
+                <artifactId>witch-meta</artifactId>
+                <version>${witch-social.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.witchcafe</groupId>
+                <artifactId>witch-pinterest</artifactId>
+                <version>${witch-social.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>de.witchcafe</groupId>
+            <artifactId>witch-social-core</artifactId>
+        </dependency>
+    </dependencies>
+
+    <!-- damit Maven witch-parent findet, wenn witch-base nicht lokal installiert ist -->
+    <repositories>
+        <repository>
+            <id>github</id>
+            <name>GitHub FrankS68 Maven Packages</name>
+            <url>https://maven.pkg.github.com/FrankS68/witch-auth</url>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+    </repositories>
+</project>

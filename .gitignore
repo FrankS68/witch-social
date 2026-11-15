@@ -1,4 +1,4 @@
-/target/
+target/
 .idea/
 .vscode/
 .settings
@@ -10,11 +10,12 @@
 
 # The following files are generated/updated by vaadin-maven-plugin
 node_modules/
-src/main/frontend/generated/
+**/src/main/frontend/generated/
 vite.generated.ts
 
 # Lokale Secrets
 application-local.properties
 
 # Lokale H2-Datenbank
-/data/
+data/
+**/src/main/bundles/
